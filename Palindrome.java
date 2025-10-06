@@ -101,18 +101,14 @@ public class Palindrome{
         Palindrome ll = new Palindrome();
 
         // Add
+
         ll.addLast(1);
-        ll.addFirst(0);
         ll.addLast(2);
-        ll.addLast(3);
-        ll.addLast(3);
         ll.addLast(2);
         ll.addLast(1);
-        ll.addLast(0);
         // Print
 
         System.out.println(ll);
-        ll.checkPalindrome();
         System.out.println(ll.checkPalindrome());
 
     }
