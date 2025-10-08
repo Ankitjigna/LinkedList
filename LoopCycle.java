@@ -65,6 +65,34 @@ public class LoopCycle{
          }
 
 
+        public static void removeCycle(){
+         //detect cycle
+         Node slow = head;
+         boolean cycle = false;
+         Node fast = head;
+         while(fast != null && fast.next != null) { 
+            slow =slow.next;
+            fast = fast.next.next;
+            if(fast == slow){
+                cycle = true;
+                break;
+            }
+         }
+            if(cycle == false){ 
+                return;
+            }
+            //find meeting point
+            slow = head;
+            Node prev = null; //last node
+            while(slow != fast){
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+         }
+           //remove cycle -> last.next = null
+             prev.next = null;
+     } 
+
 
     public static void main(String args[]){
         LoopCycle ll = new LoopCycle();
@@ -76,7 +104,11 @@ public class LoopCycle{
         System.out.println(ll);
 
         //  manually create a cycle
-         ll.tail.next = ll.head.next; // tail points to second node, forming a loop
-         System.out.println(ll.isCycle());
+        ll.tail.next = ll.head.next; // tail points to second node, forming a loop
+        System.out.println(ll.isCycle());
+        ll.removeCycle();
+        System.out.println(ll.isCycle());
+
+         
     }
 }
